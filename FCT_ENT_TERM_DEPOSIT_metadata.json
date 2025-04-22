@@ -1,0 +1,320 @@
+{   
+    "fct_ent_term_deposit": {
+      "schema": "ENT_DTM",
+      "description": "Fact dữ liệu theo dõi biến động hàng ngày về số dư, số lượng sổ tiết kiệm… của hoạt động huy động tiền gửi có kỳ hạn toàn bộ khách hàng phân khúc KHDN",
+      "columns": [
+        {
+          "Column_name": "DAYID",
+          "Description": "Ngày dữ liệu",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CONTRACT",
+          "Description": "Mã tài khoản (mã quản lý hệ thống)",
+          "Key_type": "Primary Key"
+        },
+        {
+          "Column_name": "CHANNEL_NAME",
+          "Description": "Kênh giao dịch",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "LIMIT_ID",
+          "Description": "Mã limit",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "DATASOURCE",
+          "Description": "Nguồn dữ liệu\nAZ, MM: Tiền gửi có kỳ hạn gồm tiết kiệm, hợp đồng tiền gửi, chứng chỉ tiền gửi, trái phiếu\nLD: Tiết kiệm lãi trả trước\nSC: Tiết kiệm gửi góp",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CATEGORY",
+          "Description": "Mã category của hợp đồng tiền gửi",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CO_CODE ",
+          "Description": "Mã phòng giao dịch ",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CUSTOMER ",
+          "Description": "Mã khách hàng ",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "PRODUCT_CODE",
+          "Description": "Mã sản phẩm SeABank theo cây Product",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "REVAL_RATE",
+          "Description": "Tỷ giá cuối ngày",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "INTEREST_RATE",
+          "Description": "Lãi suất hợp đồng",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CURRENCY",
+          "Description": "Loại tiền tệ của tài khoản",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CLOSE_BAL",
+          "Description": "Số dư cuối ngày (trước cob)",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CLOSE_BAL_LCY",
+          "Description": "Số dư cuối ngày (trước cob) quy đổi VNĐ",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "ACCR_INT",
+          "Description": "Tổng số tiền lãi dự chi đến ngày DAYID của kỳ lãi hiện tại",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "ONLINE_ACTUAL_BAL",
+          "Description": "Số dư cuối ngày của TK trên T24, không bao gồm giao dịch forward",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "ONLINE_CLEARED_BAL",
+          "Description": "Số dư cuối ngày của TK trên T24, bao gồm giao dịch forward",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "OPEN_ACTUAL_BAL",
+          "Description": "Số dư đầu ngày của TK trên T24",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "WORKING_BALANCE",
+          "Description": "Số dư tài khoản (Bao gồm cả các giao dịch chưa duyệt trên T24)",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "AGG_BAL_MTD",
+          "Description": "Tổng số dư Close_Bal từ đầu tháng tới dayid",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "AGG_BAL_MTD_LCY",
+          "Description": "Tổng số dư Close_Bal từ đầu tháng tới dayid quy đổi",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "AGG_BAL_YTD",
+          "Description": "Tổng số dư close_bal từ đầu năm tới dayid",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "AGG_BAL_YTD_LCY",
+          "Description": "Tổng số dư close_bal từ đầu năm tới dayid ",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "AGG_BAL",
+          "Description": "Tổng số dư lũy kế từ khi mở tài khoản tới dayid",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CHANNEL_ID",
+          "Description": "Kênh thực hiện giao dịch (main)",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "SUB_CHANNEL_ID",
+          "Description": "Kênh thực hiện giao dịch (sub)",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CAMPAIGN_ID",
+          "Description": "Mã chương trình chiến dịch",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "SETLEMENT_AC",
+          "Description": "Tài khoản cắt tiền khi mở HĐ tiền gửi",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "TERM",
+          "Description": "Kỳ hạn mở",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "TERM_SBV",
+          "Description": "Kỳ hạn danh nghĩa",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "FREQUENCY_DATE",
+          "Description": "Ngày nhận lãi hàng tháng (cùng mối liên hệ với trường DIM_DEPOSIT.FREQUENCY)",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "ROLLOVER_TERM",
+          "Description": "Kỳ hạn tái tục tiền gửi",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "FIRST_INTEREST",
+          "Description": "Lãi suất đầu tiên",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "FIRST_BALANCE",
+          "Description": "Số dư đầu tiên",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "FAVORITE_TERM",
+          "Description": "Kỳ hạn yêu thích (là kỳ hạn thực tế KH mong muốn tất toán, VD KH gửi kỳ hạn 36 tháng nhưng muốn tất toán ở kỳ hạn 12 tháng và được hưởng lãi suất của 12 tháng)",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "TOTAL_LOCKED_AMT",
+          "Description": "Tổng số tiền phong tỏa đến ngày",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "SEAB_SALES_TYPE",
+          "Description": "Nhóm cán bộ bán (TELLER, CRO.IND…)",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "SEAB_SALES_ID",
+          "Description": "ID của cán bộ bán",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "SEAB_BROKERS_TYPE",
+          "Description": "Nhóm giới thiệu (NHANVIEN, DOITACLIENKET…)",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "SEAB_BROKERS_ID",
+          "Description": "ID của bên giới thiệu",
+          "Key_type": "null"
+        },
+        {
+          "Column_name": "CUSTOMER_SK",
+          "Description": "Mã SK (Surogate Key) theo chiều bản ghi customer tới bảng dim_ent_cust và dim_ent_cust_pii",
+          "Key_type": "Foreign Key"
+        },
+        {
+          "Column_name": "CATEGORY_SK",
+          "Description": "Mã SK (Surogate Key) theo chiều bản ghi customer tới bảng dim_ent_category",
+          "Key_type": "Foreign Key"
+        },
+        {
+          "Column_name": "PRODUCTS_SK",
+          "Description": "Mã Sk theo chiều sản phẩm tới bảng dim_ent_product",
+          "Key_type": "Foreign Key"
+        },
+        {
+          "Column_name": "COMPANY_SK",
+          "Description": "Mã Sk theo chiều sản phẩm tới bảng dim_ent_company",
+          "Key_type": "Foreign Key"
+        },
+        {
+          "Column_name": "CURRENCY_SK",
+          "Description": "Mã SK theo chiều sản phẩm tới bảng dim_ent_currency",
+          "Key_type": "Foreign Key"
+        },
+        {
+          "Column_name": "CHANNEL_SK",
+          "Description": "Mã SK theo chiều sản phẩm tới bảng dim_ent_channel",
+          "Key_type": "Foreign Key"
+        },
+        {
+          "Column_name": "CONTRACT_SK",
+          "Description": "Mã SK theo chiều hợp đồng chính tới bảng dim_ent_term_deposit",
+          "Key_type": "Foreign Key"
+        }
+      ]
+    },
+    "Fact_table": {
+      "Name": "FCT_ENT_TERM_DEPOSIT",
+      "Schema": "ent_dtm",
+      "Type": "snapshot",
+      "Load_frequency": "daily",
+      "Partitions": {
+        "column": "dayid",
+        "type": "interval",
+        "unit": "day"
+      },
+      "Dimension_tables": {
+        "DIM_ENT_CUST": {
+          "Schema": "ent_dtm",
+          "Primary_key": "DIMENSION_KEY",
+          "Join_info": {
+            "fact_table_column": "CUSTOMER_SK",
+            "dimension_table_column": "DIMENSION_KEY"
+          }
+        },
+        "DIM_ENT_COMPANY": {
+          "Schema": "ent_dtm",
+          "Primary_key": "DIMENSION_KEY",
+          "Join_info": {
+            "fact_table_column": "COMPANY_SK",
+            "dimension_table_column": "DIMENSION_KEY"
+          }
+        },
+        "DIM_ENT_CATEGORY": {
+          "Schema": "ent_dtm",
+          "Primary_key": "DIMENSION_KEY",
+          "Join_info": {
+            "fact_table_column": "CATEGORY_SK",
+            "dimension_table_column": "DIMENSION_KEY"
+          }
+        },
+        "DIM_ENT_CUST_PII": {
+          "Schema": "ent_dtm",
+          "Primary_key": "DIMENSION_KEY",
+          "Join_info": {
+            "fact_table_column": "CUSTOMER_SK",
+            "dimension_table_column": "DIMENSION_KEY"
+          }
+        },
+        "DIM_ENT_PRODUCT": {
+          "Schema": "ent_dtm",
+          "Primary_key": "DIMENSION_KEY",
+          "Join_info": {
+            "fact_table_column": "PRODUCT_SK",
+            "dimension_table_column": "DIMENSION_KEY"
+          }
+        },
+        "DIM_ENT_CURRENCY": {
+          "Schema": "ent_dtm",
+          "Primary_key": "DIMENSION_KEY",
+          "Join_info": {
+            "fact_table_column": "CURRENCY_SK",
+            "dimension_table_column": "DIMENSION_KEY"
+          }
+        },
+        "DIM_ENT_CHANNEL": {
+          "Schema": "ent_dtm",
+          "Primary_key": "DIMENSION_KEY",
+          "Join_info": {
+            "fact_table_column": "CHANNEL_SK",
+            "dimension_table_column": "DIMENSION_KEY"
+          }
+        },
+        "DIM_ENT_DEPOSIT": {
+          "Schema": "ent_dtm",
+          "Primary_key": "DIMENSION_KEY",
+          "Join_info": {
+            "fact_table_column": "CONTRACT_SK",
+            "dimension_table_column": "DIMENSION_KEY"
+          }
+        }
+      }
+    }
+}
