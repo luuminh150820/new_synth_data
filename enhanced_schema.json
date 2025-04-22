@@ -1,0 +1,6712 @@
+{
+  "columns": {
+    "DAYID": {
+      "description": "The date for which the data in this row applies.  Currently all entries are from 2025-03-25.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 1,
+        "categories": [
+          {
+            "value": "2025-03-25",
+            "count": 10000,
+            "percentage": 100.0
+          }
+        ]
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        "2025-03-25",
+        "2025-03-25",
+        "2025-03-25",
+        "2025-03-25",
+        "2025-03-25"
+      ],
+      "faker_provider": "date_this_year",
+      "faker_args": {
+        "end_date": "2025-03-25"
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "YYYY-MM-DD format.  Should represent a single date for all records.",
+      "constraints_description": "Must be a valid date in YYYY-MM-DD format. All values should be identical within a single dataset.",
+      "data_quality": "Check that all values are identical. Consider adding a data quality rule to flag any variations."
+    },
+    "CONTRACT": {
+      "description": "A unique contract identifier managed by the system.  Represents a customer's account.",
+      "key_type": "Primary Key",
+      "data_type": "string",
+      "stats": {
+        "unique_values_count": 10000,
+        "max_length": 13,
+        "min_length": 12,
+        "mean_length": 12.0088
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        "000045508374",
+        "000048119956",
+        "000044620417",
+        "000041517139",
+        "000055713576"
+      ],
+      "faker_provider": "random_number",
+      "faker_args": {
+        "digits": 12
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "String of length 12-13, typically starting with zeros, and alphanumeric characters following.",
+      "constraints_description": "Length must be between 12 and 13 characters.  Should be unique for each record. Must be alphanumeric. Leading zeros are common.",
+      "data_quality": "Check for uniqueness, length constraints, and enforce alphanumeric characters."
+    },
+    "DATASOURCE": {
+      "description": "The source of the transaction data. AZ represents the most common types of savings accounts and deposits; LD represents a specific type of interest-bearing savings account; SC represents a specific type of deposit account.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 3,
+        "categories": [
+          {
+            "value": "AZ",
+            "count": 9916,
+            "percentage": 99.19
+          },
+          {
+            "value": "LD",
+            "count": 64,
+            "percentage": 0.64
+          },
+          {
+            "value": "MM",
+            "count": 17,
+            "percentage": 0.17
+          }
+        ]
+      },
+      "null_count": 3,
+      "null_percentage": 0.03,
+      "total_count": 10000,
+      "sample_values": [
+        "AZ",
+        "AZ",
+        "AZ",
+        "AZ",
+        "AZ"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "AZ",
+          "LD",
+          "SC"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values: AZ, LD, SC.",
+      "constraints_description": "Must be one of AZ, LD, or SC.",
+      "data_quality": "Validate that only AZ, LD, or SC are present. Handle or flag null values appropriately."
+    },
+    "CHANNEL_NAME": {
+      "description": "The channel through which the transaction was conducted (e.g., branch, online).",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 4,
+        "categories": [
+          {
+            "value": "BRANCH",
+            "count": 9058,
+            "percentage": 91.34
+          },
+          {
+            "value": "SEANET",
+            "count": 424,
+            "percentage": 4.28
+          },
+          {
+            "value": "PHOIAO",
+            "count": 265,
+            "percentage": 2.67
+          },
+          {
+            "value": "ARCIB",
+            "count": 170,
+            "percentage": 1.71
+          }
+        ]
+      },
+      "null_count": 83,
+      "null_percentage": 0.83,
+      "total_count": 10000,
+      "sample_values": [
+        "BRANCH",
+        "BRANCH",
+        "BRANCH",
+        "BRANCH",
+        "BRANCH"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "BRANCH",
+          "SEANET",
+          "PHOIAO",
+          "ARCIB"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values: BRANCH, SEANET, PHOIAO, ARCIB.",
+      "constraints_description": "Must be one of BRANCH, SEANET, PHOIAO, or ARCIB.",
+      "data_quality": "Validate that only BRANCH, SEANET, PHOIAO, or ARCIB are present. Handle or flag null values appropriately.  Investigate the high percentage of null values."
+    },
+    "CO_CODE": {
+      "description": "The code representing the transaction's branch or office.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 99,
+        "top_categories": [
+          {
+            "value": "VN0010002",
+            "count": 1283,
+            "percentage": 12.83
+          },
+          {
+            "value": "VN0010101",
+            "count": 612,
+            "percentage": 6.12
+          },
+          {
+            "value": "VN0010011",
+            "count": 535,
+            "percentage": 5.35
+          },
+          {
+            "value": "VN0010081",
+            "count": 473,
+            "percentage": 4.73
+          },
+          {
+            "value": "VN0010102",
+            "count": 469,
+            "percentage": 4.69
+          },
+          {
+            "value": "VN0010003",
+            "count": 464,
+            "percentage": 4.64
+          },
+          {
+            "value": "VN0010071",
+            "count": 444,
+            "percentage": 4.44
+          },
+          {
+            "value": "VN0010004",
+            "count": 411,
+            "percentage": 4.11
+          },
+          {
+            "value": "VN0010301",
+            "count": 400,
+            "percentage": 4.0
+          },
+          {
+            "value": "VN0010024",
+            "count": 349,
+            "percentage": 3.49
+          }
+        ]
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        "VN0010002",
+        "VN0010011",
+        "VN0010132",
+        "VN0010101",
+        "VN0010451"
+      ],
+      "faker_provider": "null",
+      "faker_args": {},
+      "sdv_constraints": [],
+      "post_processing": "null",
+      "domain": "String, typically starting with \"VN\" followed by numeric characters.  Approximately 99 unique values.",
+      "constraints_description": "Should start with \"VN\" followed by numbers.  Maintain the existing distribution of codes.",
+      "data_quality": "Check the format (VN followed by numbers). Validate that the code exists within the known set of codes."
+    },
+    "CATEGORY": {
+      "description": "Mã category của hợp đồng tiền gửi. Represents the category code of a deposit contract.  This likely corresponds to a specific type of deposit product offered by the bank.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 17,
+        "top_categories": [
+          {
+            "value": 6515,
+            "count": 8343,
+            "percentage": 83.43
+          },
+          {
+            "value": 6537,
+            "count": 457,
+            "percentage": 4.57
+          },
+          {
+            "value": 6562,
+            "count": 344,
+            "percentage": 3.44
+          },
+          {
+            "value": 6567,
+            "count": 344,
+            "percentage": 3.44
+          },
+          {
+            "value": 6560,
+            "count": 105,
+            "percentage": 1.05
+          },
+          {
+            "value": 6563,
+            "count": 105,
+            "percentage": 1.05
+          },
+          {
+            "value": 6501,
+            "count": 71,
+            "percentage": 0.71
+          },
+          {
+            "value": 21007,
+            "count": 64,
+            "percentage": 0.64
+          },
+          {
+            "value": 6591,
+            "count": 41,
+            "percentage": 0.41
+          },
+          {
+            "value": 6587,
+            "count": 38,
+            "percentage": 0.38
+          }
+        ]
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        6515,
+        6562,
+        6515,
+        6515,
+        6515
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          6515,
+          6537,
+          6562,
+          6567,
+          6560,
+          6563,
+          6501,
+          21007,
+          6591,
+          6587,
+          6558,
+          6559,
+          6578,
+          6583,
+          6588,
+          6589,
+          6590
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values representing different deposit categories.  Values range from (e.g.,) 6501 to 21007, with 6515 being the most frequent.  The specific meaning of each code needs further investigation.",
+      "constraints_description": "Must be one of the observed unique category codes.",
+      "data_quality": "Verify that all values are among the known unique categories. Check for any inconsistencies or missing values (though null count is 0)."
+    },
+    "CUSTOMER": {
+      "description": "Mã khách hàng. Represents the unique identifier for a bank customer.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 478.0,
+        "max": 99888888.0,
+        "mean": 17219633.9177,
+        "median": 15293752.0,
+        "std_dev": 15619703.99045895,
+        "unique_values_count": 1149
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        14499882,
+        14940778,
+        14815555,
+        15010732,
+        15293752
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 478,
+        "max": 99888888
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values representing customer IDs.  Ranges from 478 to 99888888.",
+      "constraints_description": "Must be a unique positive integer.",
+      "data_quality": "Check for duplicates.  Ensure all values are positive integers."
+    },
+    "PRODUCT_CODE": {
+      "description": "Mã sản phẩm SeABank theo cây Product. Represents the SeABank product code according to the product tree.  This identifies the specific financial product (e.g., savings account, term deposit).",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 700.0,
+        "max": 9121.0,
+        "mean": 1076.2685,
+        "median": 701.0,
+        "std_dev": 1732.1400204697084,
+        "unique_values_count": 24
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        701,
+        701,
+        701,
+        701,
+        701
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          701,
+          702,
+          703,
+          704,
+          705,
+          706,
+          707,
+          708,
+          709,
+          710,
+          711,
+          712,
+          713,
+          714,
+          715,
+          716,
+          717,
+          718,
+          719,
+          720,
+          721,
+          722,
+          723,
+          724
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values representing product codes. Ranges from 700 to 9121.",
+      "constraints_description": "Must be one of the observed unique product codes.",
+      "data_quality": "Verify that all values are among the known unique product codes. Check for any inconsistencies or missing values."
+    },
+    "CURRENCY": {
+      "description": "Loại tiền tệ của tài khoản. Represents the currency type of the account.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 2,
+        "categories": [
+          {
+            "value": "VND",
+            "count": 9990,
+            "percentage": 99.9
+          },
+          {
+            "value": "USD",
+            "count": 10,
+            "percentage": 0.1
+          }
+        ]
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        "VND",
+        "VND",
+        "VND",
+        "VND",
+        "VND"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "VND",
+          "USD"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values representing currency codes.  Primarily VND (Vietnamese Dong) with a small number of USD (US Dollar) values.",
+      "constraints_description": "Must be either 'VND' or 'USD'.",
+      "data_quality": "Verify that only 'VND' and 'USD' are used."
+    },
+    "CLOSE_BAL": {
+      "description": "Số dư cuối ngày (trước cob). Represents the closing balance of an account at the end of the day (before close of business).",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 898303000000.0,
+        "mean": 4235444747.1643,
+        "median": 0.0,
+        "std_dev": 31327578816.73924,
+        "unique_values_count": 1079
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        0.0,
+        3000000000.0,
+        15000000000.0,
+        0.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 898303000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null",
+      "domain": "Integer values representing monetary amounts in the account's currency.  Ranges from 0 to 898303000000.",
+      "constraints_description": "Must be a non-negative integer.",
+      "data_quality": "Check for negative values. Consider whether very large values are realistic.  Analyze the distribution to identify outliers."
+    },
+    "CLOSE_BAL_LCY": {
+      "description": "Daily closing balance (in Vietnamese Dong). Represents the account balance at the end of a given day.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 898303000000.0,
+        "mean": 4244556847.7643,
+        "median": 0.0,
+        "std_dev": 31336053658.739815,
+        "unique_values_count": 1079
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        200000000000.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 898303000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers.  Realistic range: 0 to 898,303,000,000 VND.  The median is 0, suggesting many accounts may have a zero balance on a given day.",
+      "constraints_description": "Must be a non-negative integer.",
+      "data_quality": "Check for negative values. Investigate the high number of zero balances.  Consider whether there are data entry errors or if the zero balance is a significant characteristic of the dataset."
+    },
+    "AGG_BAL_MTD": {
+      "description": "Aggregate balance month-to-date.  Represents the sum of `CLOSE_BAL_LCY` from the beginning of the month to the current date.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 22457575000000.0,
+        "mean": 101731325652.3369,
+        "median": 0.0,
+        "std_dev": 772633205390.1932,
+        "unique_values_count": 1254
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        125000000000.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 22457575000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers. Realistic range: 0 to 2,245,757,500,000 VND. The median is 0, indicating many accounts have a zero balance for the month-to-date period.",
+      "constraints_description": "Must be a non-negative integer.  Should be greater than or equal to the `CLOSE_BAL_LCY` for the last day of the month.",
+      "data_quality": "Check for negative values. Investigate the high number of zero balances.  Ensure values align with the sum of daily closing balances for the month."
+    },
+    "AGG_BAL_MTD_LCY": {
+      "description": "Aggregate balance month-to-date in Vietnamese Dong.  Represents the sum of `CLOSE_BAL_LCY` from the beginning of the month to the current date, in the local currency.  Similar to `AGG_BAL_MTD`, but explicitly specifying the currency.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 22457575000000.0,
+        "mean": 98774398615.99599,
+        "median": 0.0,
+        "std_dev": 780432275463.3577,
+        "unique_values_count": 1146
+      },
+      "null_count": 278,
+      "null_percentage": 2.78,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 22457575000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers. Realistic range: 0 to 2,245,757,500,000 VND. The high number of nulls should be investigated.",
+      "constraints_description": "Must be a non-negative integer or null. Should be greater than or equal to the `CLOSE_BAL_LCY` for the last day of the month.",
+      "data_quality": "Check for negative values. Investigate the 2.78% null values and determine a strategy for handling them (e.g., imputation or removal).  Ensure values align with the sum of daily closing balances for the month."
+    },
+    "AGG_BAL_YTD": {
+      "description": "Aggregate balance year-to-date. Represents the sum of `CLOSE_BAL_LCY` from the beginning of the year to the current date.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 90000000000000.0,
+        "mean": 347892620945.5418,
+        "median": 0.0,
+        "std_dev": 2650416414424.107,
+        "unique_values_count": 1782
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 90000000000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers. Realistic range: 0 to 9,000,000,000,000 VND. The median is 0, suggesting many accounts have a zero balance year-to-date.",
+      "constraints_description": "Must be a non-negative integer. Should be greater than or equal to the `AGG_BAL_MTD`.",
+      "data_quality": "Check for negative values. Investigate the high number of zero balances. Ensure values align with the sum of daily closing balances for the year."
+    },
+    "AGG_BAL_YTD_LCY": {
+      "description": "Aggregate balance year-to-date in Vietnamese Dong.  Represents the sum of `CLOSE_BAL_LCY` from the beginning of the year to the current date, in the local currency. Similar to `AGG_BAL_YTD`, but explicitly specifying the currency.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 75457452000000.0,
+        "mean": 306423045630.45776,
+        "median": 0.0,
+        "std_dev": 2464409994258.8765,
+        "unique_values_count": 1361
+      },
+      "null_count": 903,
+      "null_percentage": 9.03,
+      "total_count": 10000,
+      "sample_values": [
+        100800000000.0,
+        0.0,
+        0.0,
+        0.0,
+        126000000000.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 75457452000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers. Realistic range: 0 to 7,545,745,200,000 VND.  The high number of nulls should be investigated.",
+      "constraints_description": "Must be a non-negative integer or null. Should be greater than or equal to the `AGG_BAL_MTD_LCY`.",
+      "data_quality": "Check for negative values. Investigate the 9.03% null values and determine a strategy for handling them (e.g., imputation or removal).  Ensure values align with the sum of daily closing balances for the year."
+    },
+    "AGG_BAL": {
+      "description": "Total amount of money withdrawn from the account up to the DAYID.  Represents the aggregate balance withdrawn.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 439200000000000.0,
+        "mean": 3694818481295.465,
+        "median": 310000000000.0,
+        "std_dev": 18138530085594.902,
+        "unique_values_count": 5172
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        34000000000.0,
+        18100000000000.0,
+        64400000000.0,
+        64000000000.0,
+        9800000000.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 439200000000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers. Ranges from 0 to 43,920,000,000,000 (43.92 trillion).",
+      "constraints_description": "Must be a non-negative integer.  Values should reflect realistic banking transaction amounts.",
+      "data_quality": "Check for non-negative values.  Investigate outliers significantly exceeding the median. Consider whether extremely high values are genuine or require further investigation (potential data entry errors)."
+    },
+    "TOT_INTEREST_AMT": {
+      "description": "Total amount of interest earned.",
+      "key_type": "",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 21355479452.0,
+        "mean": 6751286.845,
+        "median": 0.0,
+        "std_dev": 260999515.7824325,
+        "unique_values_count": 53
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 21355479452
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers. Ranges from 0 to 21,355,479,452.",
+      "constraints_description": "Must be a non-negative integer.  Should correlate with the INTEREST_RATE and AGG_BAL.",
+      "data_quality": "Check for non-negative values. A large number of zero values suggests a potential issue in data collection or a significant portion of accounts without interest accrual. Investigate why the median is 0."
+    },
+    "REVAL_RATE": {
+      "description": "Revaluation rate at the end of the day.  Likely represents a specific exchange rate or a factor used in revaluation.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 2,
+        "categories": [
+          {
+            "value": 1.0,
+            "count": 9990,
+            "percentage": 99.9
+          },
+          {
+            "value": 25640.0,
+            "count": 10,
+            "percentage": 0.1
+          }
+        ]
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          1.0,
+          25640.0
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical. Values are either 1.0 or 25640.0.",
+      "constraints_description": "Must be either 1.0 or 25640.0.",
+      "data_quality": "Verify that only these two values exist. The disproportionate number of 1.0 values suggests investigation into the meaning of the 25640.0 value and its potential cause."
+    },
+    "INTEREST_RATE": {
+      "description": "Interest rate agreed upon in the contract.",
+      "key_type": "null",
+      "data_type": "float",
+      "stats": {
+        "min": 0.0,
+        "max": 12.0,
+        "mean": 4.966154746423927,
+        "median": 5.0,
+        "std_dev": 1.8276656086909346,
+        "unique_values_count": 221
+      },
+      "null_count": 3,
+      "null_percentage": 0.03,
+      "total_count": 10000,
+      "sample_values": [
+        8.7,
+        8.7,
+        4.68,
+        2.7,
+        5.3
+      ],
+      "faker_provider": "pyfloat",
+      "faker_args": {
+        "min_value": 0.0,
+        "max_value": 12.0
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Floating-point numbers. Ranges from 0.0 to 12.0 (potentially representing a percentage).",
+      "constraints_description": "Must be a non-negative floating-point number between 0.0 and 12.0 (inclusive).  Values should be consistent with typical banking interest rates.",
+      "data_quality": "Handle null values (e.g., imputation or removal). Verify that values are within the expected range for interest rates."
+    },
+    "ACCR_INT": {
+      "description": "Total amount of interest accrued up to DAYID for the current interest.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 59400000000.0,
+        "mean": 92269185.9,
+        "median": 0.0,
+        "std_dev": 1048014409.5612841,
+        "unique_values_count": 2274
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        0.0,
+        0.0,
+        18550685.0,
+        66673973.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 59400000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers. Ranges from 0 to 59,400,000,000.",
+      "constraints_description": "Must be a non-negative integer. Should correlate with the INTEREST_RATE and AGG_BAL.",
+      "data_quality": "Check for non-negative values. Investigate outliers.  Consider whether there's a relationship between this and `TOT_INTEREST_AMT`."
+    },
+    "ACCR_REMAIN": {
+      "description": "Accrued remaining balance. This represents the total accrued amount remaining in an account, which can be positive or negative reflecting credits and debits.",
+      "key_type": "",
+      "data_type": "integer",
+      "stats": {
+        "min": -250033974.0,
+        "max": 59432547945.0,
+        "mean": 361427737.57621527,
+        "median": 9650685.0,
+        "std_dev": 2060084561.8164454,
+        "unique_values_count": 6087
+      },
+      "null_count": 2,
+      "null_percentage": 0.02,
+      "total_count": 10000,
+      "sample_values": [
+        53265915.0,
+        96634.0,
+        801500.0,
+        1550000.0,
+        28050000000.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": -250033974,
+        "max": 59432547945
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer.  Range: [-250,033,974, 59,432,547,945].  Values can be negative (representing a debit balance).",
+      "constraints_description": "Should be a whole number.  Values outside the observed range should be investigated for accuracy.",
+      "data_quality": "Check for outliers beyond the min/max range provided. Validate that the data type is integer. Handle null values appropriately (e.g., imputation or removal)."
+    },
+    "REMAIN_TERM": {
+      "description": "Remaining term code. This likely represents the remaining time period of a loan or deposit, categorized into different codes.  \"D00\" appears to be the most common category, potentially indicating a specific term or status.",
+      "key_type": "",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 61,
+        "top_categories": [
+          {
+            "value": "D00",
+            "count": 6558,
+            "percentage": 65.6
+          },
+          {
+            "value": "M02",
+            "count": 319,
+            "percentage": 3.19
+          },
+          {
+            "value": "M03",
+            "count": 317,
+            "percentage": 3.17
+          },
+          {
+            "value": "M05",
+            "count": 283,
+            "percentage": 2.83
+          },
+          {
+            "value": "M04",
+            "count": 271,
+            "percentage": 2.71
+          },
+          {
+            "value": "M06",
+            "count": 208,
+            "percentage": 2.08
+          },
+          {
+            "value": "M01",
+            "count": 207,
+            "percentage": 2.07
+          },
+          {
+            "value": "M09",
+            "count": 206,
+            "percentage": 2.06
+          },
+          {
+            "value": "M08",
+            "count": 155,
+            "percentage": 1.55
+          },
+          {
+            "value": "M10",
+            "count": 152,
+            "percentage": 1.52
+          }
+        ]
+      },
+      "null_count": 3,
+      "null_percentage": 0.03,
+      "total_count": 10000,
+      "sample_values": [
+        "D00",
+        "M06",
+        "D00",
+        "D00",
+        "D00"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "D00",
+          "M01",
+          "M02",
+          "M03",
+          "M04",
+          "M05",
+          "M06",
+          "M07",
+          "M08",
+          "M09",
+          "M10",
+          "M11",
+          "M12"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical.  Values are alphanumeric codes (e.g., \"D00\", \"M01\", \"M02\", ...).  The exact meaning of each code needs further investigation.",
+      "constraints_description": "Value must be one of the observed categories.",
+      "data_quality": "Ensure values belong to the known set of categories.  Investigate the meaning of each code. Handle null values appropriately (e.g., imputation or removal)."
+    },
+    "WORKING_BALANCE": {
+      "description": "Working balance of the account, inclusive of transactions pending approval on T24 (a banking system).",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 898303000000.0,
+        "mean": 4199100485.8493,
+        "median": 0.0,
+        "std_dev": 31281673975.86693,
+        "unique_values_count": 1079
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        109405717.0,
+        0.0,
+        0.0,
+        2000000000.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 898303000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer. Range: [0, 898,303,000,000]. Represents the current balance in the account.",
+      "constraints_description": "Must be a non-negative integer.  Values should be consistent with account transactions.",
+      "data_quality": "Values should be non-negative. Check for outliers and inconsistencies with transaction data."
+    },
+    "DATE_LAST_CR_CUST": {
+      "description": "Date of the last customer credit transaction.  Represents the date of the most recent deposit or credit made by the customer.",
+      "key_type": "",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 890,
+        "top_categories": [
+          {
+            "value": "2024-04-11",
+            "count": 89,
+            "percentage": 0.93
+          },
+          {
+            "value": "2023-12-29",
+            "count": 66,
+            "percentage": 0.69
+          },
+          {
+            "value": "2022-12-30",
+            "count": 53,
+            "percentage": 0.55
+          },
+          {
+            "value": "2024-02-06",
+            "count": 50,
+            "percentage": 0.52
+          },
+          {
+            "value": "2025-01-03",
+            "count": 43,
+            "percentage": 0.45
+          },
+          {
+            "value": "2024-12-31",
+            "count": 42,
+            "percentage": 0.44
+          },
+          {
+            "value": "2025-02-03",
+            "count": 36,
+            "percentage": 0.37
+          },
+          {
+            "value": "2024-07-23",
+            "count": 35,
+            "percentage": 0.36
+          },
+          {
+            "value": "2025-03-14",
+            "count": 34,
+            "percentage": 0.35
+          },
+          {
+            "value": "2024-03-29",
+            "count": 34,
+            "percentage": 0.35
+          }
+        ]
+      },
+      "null_count": 390,
+      "null_percentage": 3.9,
+      "total_count": 10000,
+      "sample_values": [
+        "2023-09-25",
+        "2023-11-24",
+        "2022-10-13",
+        "2024-02-22",
+        "2023-02-07"
+      ],
+      "faker_provider": "date_between",
+      "faker_args": {
+        "start_date": "2022-01-01",
+        "end_date": "2025-12-31"
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical. Dates in \"YYYY-MM-DD\" format.",
+      "constraints_description": "Should be a valid date.",
+      "data_quality": "Validate that the value is a valid date. Handle null values appropriately (e.g., imputation with a default value or removal). Check for date consistency with other transaction data."
+    },
+    "DATE_LAST_DR_CUST": {
+      "description": "Date of the last customer debit transaction. Represents the date of the most recent withdrawal or debit made by the customer.",
+      "key_type": "",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 529,
+        "top_categories": [
+          {
+            "value": "2025-02-03",
+            "count": 41,
+            "percentage": 1.3
+          },
+          {
+            "value": "2024-05-02",
+            "count": 33,
+            "percentage": 1.04
+          },
+          {
+            "value": "2024-02-15",
+            "count": 33,
+            "percentage": 1.04
+          },
+          {
+            "value": "2023-05-22",
+            "count": 26,
+            "percentage": 0.82
+          },
+          {
+            "value": "2024-03-06",
+            "count": 24,
+            "percentage": 0.76
+          },
+          {
+            "value": "2025-01-20",
+            "count": 23,
+            "percentage": 0.73
+          },
+          {
+            "value": "2025-02-24",
+            "count": 23,
+            "percentage": 0.73
+          },
+          {
+            "value": "2023-09-18",
+            "count": 22,
+            "percentage": 0.7
+          },
+          {
+            "value": "2024-07-29",
+            "count": 20,
+            "percentage": 0.63
+          },
+          {
+            "value": "2023-10-30",
+            "count": 19,
+            "percentage": 0.6
+          }
+        ]
+      },
+      "null_count": 6837,
+      "null_percentage": 68.37,
+      "total_count": 10000,
+      "sample_values": [
+        "2024-01-29",
+        "2024-01-29",
+        "2023-07-10",
+        "2023-11-29",
+        "2023-06-01"
+      ],
+      "faker_provider": "date_between",
+      "faker_args": {
+        "start_date": "2022-01-01",
+        "end_date": "2025-12-31"
+      },
+      "sdv_constraints": [],
+      "post_processing": "null",
+      "domain": "Categorical. Dates in \"YYYY-MM-DD\" format.  High percentage of null values suggests many accounts may not have recent debits.",
+      "constraints_description": "Should be a valid date.",
+      "data_quality": "Validate that the value is a valid date. Handle the high number of null values appropriately.  Consider whether missing values indicate a lack of debit activity or a data collection issue."
+    },
+    "DATE_LAST_CR_BANK": {
+      "description": "Date of the last credit transaction at the bank.",
+      "key_type": "",
+      "data_type": "string",
+      "stats": {
+        "unique_values_count": 229,
+        "max_length": 10,
+        "min_length": 10,
+        "mean_length": 10.0
+      },
+      "null_count": 9691,
+      "null_percentage": 96.91,
+      "total_count": 10000,
+      "sample_values": [
+        "2019-11-11",
+        "2020-09-16",
+        "2015-03-06",
+        "2021-01-14",
+        "2020-10-28"
+      ],
+      "faker_provider": "date_time",
+      "faker_args": {
+        "start_date": "-10y",
+        "end_date": "today"
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Dates in YYYY-MM-DD format, ranging from 2015-01-01 to 2024-12-31 (adjust range as needed based on actual data).",
+      "constraints_description": "Date should be in YYYY-MM-DD format.  Should be a valid date.",
+      "data_quality": "Check for valid date format (YYYY-MM-DD).  Handle missing values appropriately (e.g., imputation or removal).  Check for outliers or impossible dates."
+    },
+    "DATE_LAST_DR_BANK": {
+      "description": "Date of the last debit transaction at the bank.  Almost all values are missing.",
+      "key_type": "",
+      "data_type": "string",
+      "stats": {
+        "unique_values_count": 1,
+        "max_length": 10,
+        "min_length": 10,
+        "mean_length": 10.0
+      },
+      "null_count": 9999,
+      "null_percentage": 99.99,
+      "total_count": 10000,
+      "sample_values": [
+        "2024-01-04"
+      ],
+      "faker_provider": "date_time",
+      "faker_args": {
+        "start_date": "-10y",
+        "end_date": "today"
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Dates in YYYY-MM-DD format. Primarily null.",
+      "constraints_description": "Date should be in YYYY-MM-DD format if not null. Should be a valid date.",
+      "data_quality": "High percentage of null values. Investigate reasons for missing data.  Check for valid date format (YYYY-MM-DD) for non-null values."
+    },
+    "DATE_LAST_CR_AUTO": {
+      "description": "Date of the last credit transaction related to an automobile.",
+      "key_type": "",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 540,
+        "top_categories": [
+          {
+            "value": "2025-02-03",
+            "count": 47,
+            "percentage": 1.28
+          },
+          {
+            "value": "2025-03-24",
+            "count": 39,
+            "percentage": 1.06
+          },
+          {
+            "value": "2025-01-20",
+            "count": 29,
+            "percentage": 0.79
+          },
+          {
+            "value": "2023-10-30",
+            "count": 28,
+            "percentage": 0.76
+          },
+          {
+            "value": "2025-02-24",
+            "count": 27,
+            "percentage": 0.74
+          },
+          {
+            "value": "2024-11-25",
+            "count": 26,
+            "percentage": 0.71
+          },
+          {
+            "value": "2024-03-06",
+            "count": 24,
+            "percentage": 0.65
+          },
+          {
+            "value": "2025-03-10",
+            "count": 23,
+            "percentage": 0.63
+          },
+          {
+            "value": "2024-02-15",
+            "count": 23,
+            "percentage": 0.63
+          },
+          {
+            "value": "2023-11-20",
+            "count": 23,
+            "percentage": 0.63
+          }
+        ]
+      },
+      "null_count": 6331,
+      "null_percentage": 63.31,
+      "total_count": 10000,
+      "sample_values": [
+        "2023-12-08",
+        "2024-05-09",
+        "2023-11-30",
+        "2025-01-10",
+        "2024-09-06"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "2025-02-03",
+          "2025-03-24",
+          "2025-01-20",
+          "2023-10-30",
+          "2025-02-24",
+          "2024-11-25",
+          "2024-03-06",
+          "2025-03-10",
+          "2024-02-15",
+          "2023-11-20"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Dates in YYYY-MM-DD format.  Distribution shows recent dates are more frequent.",
+      "constraints_description": "Date should be in YYYY-MM-DD format. Should be a valid date.",
+      "data_quality": "Check for valid date format (YYYY-MM-DD).  Handle missing values appropriately (e.g., imputation or removal). Check for outliers or impossible dates."
+    },
+    "DATE_LAST_DR_AUTO": {
+      "description": "Date of the last debit transaction related to an automobile.  Almost all values are missing.",
+      "key_type": "",
+      "data_type": "string",
+      "stats": {
+        "unique_values_count": 6,
+        "max_length": 10,
+        "min_length": 10,
+        "mean_length": 10.0
+      },
+      "null_count": 9991,
+      "null_percentage": 99.91,
+      "total_count": 10000,
+      "sample_values": [
+        "2024-10-31",
+        "2024-11-14",
+        "2023-10-16",
+        "2024-10-01",
+        "2024-10-01"
+      ],
+      "faker_provider": "date_time",
+      "faker_args": {
+        "start_date": "-10y",
+        "end_date": "today"
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Dates in YYYY-MM-DD format. Primarily null.",
+      "constraints_description": "Date should be in YYYY-MM-DD format if not null. Should be a valid date.",
+      "data_quality": "High percentage of null values. Investigate reasons for missing data.  Check for valid date format (YYYY-MM-DD) for non-null values."
+    },
+    "LIMIT_ID": {
+      "description": "Mã limit (Limit ID).  Represents a categorical limit identifier.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 32,
+        "top_categories": [
+          {
+            "value": "15421440.0009900.01",
+            "count": 9,
+            "percentage": 11.11
+          },
+          {
+            "value": "16090963.0009900.01",
+            "count": 8,
+            "percentage": 9.88
+          },
+          {
+            "value": "123708.0009900.01",
+            "count": 6,
+            "percentage": 7.41
+          },
+          {
+            "value": "445118.0009900.01",
+            "count": 4,
+            "percentage": 4.94
+          },
+          {
+            "value": "192268.0009900.01",
+            "count": 4,
+            "percentage": 4.94
+          },
+          {
+            "value": "16274020.0009900.01",
+            "count": 4,
+            "percentage": 4.94
+          },
+          {
+            "value": "15654762.0009900.01",
+            "count": 3,
+            "percentage": 3.7
+          },
+          {
+            "value": "16340143.0009900.01",
+            "count": 3,
+            "percentage": 3.7
+          },
+          {
+            "value": "16661904.0009900.01",
+            "count": 3,
+            "percentage": 3.7
+          },
+          {
+            "value": "15738283.0009900.01",
+            "count": 3,
+            "percentage": 3.7
+          }
+        ]
+      },
+      "null_count": 9919,
+      "null_percentage": 99.19,
+      "total_count": 10000,
+      "sample_values": [
+        "123708.0009900.01",
+        "14851959.0009900.01",
+        "14728668.0009900.01",
+        "15421440.0009900.01",
+        "15654762.0009900.01"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "15421440.0009900.01",
+          "16090963.0009900.01",
+          "123708.0009900.01",
+          "445118.0009900.01",
+          "192268.0009900.01",
+          "16274020.0009900.01",
+          "15654762.0009900.01",
+          "16340143.0009900.01",
+          "16661904.0009900.01",
+          "15738283.0009900.01"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null",
+      "domain": "Categorical values representing different credit limits.  Values appear to be numeric strings with a consistent format.",
+      "constraints_description": "Values should follow a consistent pattern (e.g.,  'XXXXXXXX.XXXXXXXX.XX'). Check for valid format.  Maintain the unique values.",
+      "data_quality": "High percentage of null values. Investigate reasons for missing data. Check for and handle duplicates if appropriate. Validate the format of the non-null values."
+    },
+    "LINE_NO": {
+      "description": "Line number within the dataset.  Appears to be a grouping or identifier, potentially related to a specific transaction or record within a larger batch.  The high concentration of 3160.0 suggests this might be a default value or an indicator of a specific processing step.",
+      "key_type": "",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 4,
+        "categories": [
+          {
+            "value": 3160.0,
+            "count": 9787,
+            "percentage": 98.84
+          },
+          {
+            "value": 3320.0,
+            "count": 105,
+            "percentage": 1.06
+          },
+          {
+            "value": 3180.0,
+            "count": 9,
+            "percentage": 0.09
+          },
+          {
+            "value": 3155.0,
+            "count": 1,
+            "percentage": 0.01
+          }
+        ]
+      },
+      "null_count": 98,
+      "null_percentage": 0.98,
+      "total_count": 10000,
+      "sample_values": [
+        3160.0,
+        3160.0,
+        3160.0,
+        3160.0,
+        3160.0
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          3155.0,
+          3160.0,
+          3180.0,
+          3320.0
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "{3155.0, 3160.0, 3180.0, 3320.0}  Values appear to be integers representing line numbers.",
+      "constraints_description": "Values should be one of the observed categories: 3155, 3160, 3180, 3320.",
+      "data_quality": "Check for consistency in the assignment of line numbers. Investigate the meaning of different line numbers and handle the high prevalence of 3160.0.  Impute missing values based on a suitable strategy (e.g., mode imputation or a more sophisticated approach depending on the business context)."
+    },
+    "CAMPAIGN_ID": {
+      "description": "Identifier for the marketing campaign associated with the transaction or account.  The values suggest a naming convention possibly including campaign name, year, and other relevant codes.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 15,
+        "top_categories": [
+          {
+            "value": "SEAB.TG.TAILOC",
+            "count": 4324,
+            "percentage": 73.75
+          },
+          {
+            "value": "CBD.2022.TG.PHATLOC",
+            "count": 1430,
+            "percentage": 24.39
+          },
+          {
+            "value": "SEAB.UUDAI.LS",
+            "count": 74,
+            "percentage": 1.26
+          },
+          {
+            "value": "SEAB.TG.2017.2",
+            "count": 7,
+            "percentage": 0.12
+          },
+          {
+            "value": "CBD.TG.PHATLOC.2022",
+            "count": 7,
+            "percentage": 0.12
+          },
+          {
+            "value": "SEAB.TGDNL",
+            "count": 7,
+            "percentage": 0.12
+          },
+          {
+            "value": "SEAB.TG.2016.1",
+            "count": 3,
+            "percentage": 0.05
+          },
+          {
+            "value": "SEAB.TGDNL.2018",
+            "count": 3,
+            "percentage": 0.05
+          },
+          {
+            "value": "SEAB.TG.2017.1",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "value": "SEAB.TAILOC.TG",
+            "count": 1,
+            "percentage": 0.02
+          }
+        ]
+      },
+      "null_count": 4137,
+      "null_percentage": 41.37,
+      "total_count": 10000,
+      "sample_values": [
+        "SEAB.TG.TAILOC",
+        "SEAB.TG.TAILOC",
+        "CBD.2022.TG.PHATLOC",
+        "CBD.2022.TG.PHATLOC",
+        "CBD.2022.TG.PHATLOC"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "SEAB.TG.TAILOC",
+          "CBD.2022.TG.PHATLOC",
+          "SEAB.UUDAI.LS",
+          "SEAB.TG.2017.2",
+          "CBD.TG.PHATLOC.2022",
+          "SEAB.TGDNL",
+          "SEAB.TG.2016.1",
+          "SEAB.TGDNL.2018",
+          "SEAB.TG.2017.1",
+          "SEAB.TAILOC.TG",
+          null
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values, seemingly composed of alphanumeric codes indicating specific campaigns.  Examples include: SEAB.TG.TAILOC, CBD.2022.TG.PHATLOC, etc.",
+      "constraints_description": "Values should adhere to a consistent internal naming convention.",
+      "data_quality": "Validate the format of campaign IDs.  Handle null values using an appropriate imputation strategy (e.g., mode imputation, or a more informed approach if more context is available)."
+    },
+    "SETLEMENT_AC": {
+      "description": "Settlement account number used when the money was deposited. Represents the account where funds were ultimately transferred.  The format suggests a mix of account numbers with and without prefixes (like \"VND\").",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 30,
+        "top_categories": [
+          {
+            "value": "VND1142600090001",
+            "count": 14,
+            "percentage": 17.28
+          },
+          {
+            "value": "VND1142600050071",
+            "count": 9,
+            "percentage": 11.11
+          },
+          {
+            "value": "VND1142600050101",
+            "count": 8,
+            "percentage": 9.88
+          },
+          {
+            "value": "000008819508",
+            "count": 4,
+            "percentage": 4.94
+          },
+          {
+            "value": "000004921853",
+            "count": 3,
+            "percentage": 3.7
+          },
+          {
+            "value": "888003168888",
+            "count": 3,
+            "percentage": 3.7
+          },
+          {
+            "value": "000000627156",
+            "count": 3,
+            "percentage": 3.7
+          },
+          {
+            "value": "000000221107",
+            "count": 3,
+            "percentage": 3.7
+          },
+          {
+            "value": "000001211935",
+            "count": 3,
+            "percentage": 3.7
+          },
+          {
+            "value": "1020012204005",
+            "count": 2,
+            "percentage": 2.47
+          }
+        ]
+      },
+      "null_count": 9919,
+      "null_percentage": 99.19,
+      "total_count": 10000,
+      "sample_values": [
+        "VND1142600050101",
+        "0020026818002",
+        "888003159999",
+        "VND1142600090001",
+        "VND1142600050101"
+      ],
+      "faker_provider": "null",
+      "faker_args": {},
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Alphanumeric strings representing account numbers.  Variety in formats and prefixes observed.",
+      "constraints_description": "Account numbers should follow the format observed in the dataset (with or without prefixes). Check for duplicate values.",
+      "data_quality": "Investigate the meaning of the prefixes (e.g., \"VND\").  Handle missing values appropriately (likely imputation with a strategy informed by the context).  Validate the account number format according to bank's standards if available."
+    },
+    "CLOSE_REASON": {
+      "description": "Reason for closing the account or transaction.  Currently, all values are null.",
+      "key_type": "",
+      "data_type": "integer",
+      "stats": {
+        "unique_values_count": 0
+      },
+      "null_count": 10000,
+      "null_percentage": 100.0,
+      "total_count": 10000,
+      "sample_values": [],
+      "faker_provider": "null",
+      "faker_args": {},
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Unknown, needs further investigation.",
+      "constraints_description": "Needs definition based on available metadata.",
+      "data_quality": "This column requires attention.  The fact that all values are currently null suggests either a data collection issue or that this information wasn't recorded.  Determine if this field should be populated and how."
+    },
+    "TERM": {
+      "description": "Loan term or duration in months (indicated by the \"M\" prefix).",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 30,
+        "top_categories": [
+          {
+            "value": "M01",
+            "count": 3157,
+            "percentage": 31.58
+          },
+          {
+            "value": "M06",
+            "count": 2945,
+            "percentage": 29.46
+          },
+          {
+            "value": "M12",
+            "count": 1806,
+            "percentage": 18.07
+          },
+          {
+            "value": "M03",
+            "count": 557,
+            "percentage": 5.57
+          },
+          {
+            "value": "M13",
+            "count": 481,
+            "percentage": 4.81
+          },
+          {
+            "value": "M02",
+            "count": 127,
+            "percentage": 1.27
+          },
+          {
+            "value": "M36",
+            "count": 112,
+            "percentage": 1.12
+          },
+          {
+            "value": "M24",
+            "count": 105,
+            "percentage": 1.05
+          },
+          {
+            "value": "M09",
+            "count": 103,
+            "percentage": 1.03
+          },
+          {
+            "value": "M07",
+            "count": 102,
+            "percentage": 1.02
+          }
+        ]
+      },
+      "null_count": 3,
+      "null_percentage": 0.03,
+      "total_count": 10000,
+      "sample_values": [
+        "M03",
+        "M01",
+        "M03",
+        "M06",
+        "M06"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "M01",
+          "M06",
+          "M12",
+          "M03",
+          "M13",
+          "M02",
+          "M36",
+          "M24",
+          "M09",
+          "M07",
+          null
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values representing loan terms, with values like \"M01\" (1 month), \"M06\" (6 months), etc.",
+      "constraints_description": "Values should follow the pattern \"Mxx\" where \"xx\" is a two-digit integer representing the loan term in months.",
+      "data_quality": "Validate the format of the term values. Impute the three null values using an appropriate strategy (e.g., mode imputation)."
+    },
+    "TERM_SBV": {
+      "description": "Term of the savings account, represented by a categorical code.  Codes likely represent different durations (e.g., M01 might be 1 month, M12 might be 12 months).  Requires a mapping to understand the exact duration represented by each code.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 23,
+        "top_categories": [
+          {
+            "value": "M01",
+            "count": 3162,
+            "percentage": 31.63
+          },
+          {
+            "value": "M06",
+            "count": 2960,
+            "percentage": 29.61
+          },
+          {
+            "value": "M12",
+            "count": 1817,
+            "percentage": 18.18
+          },
+          {
+            "value": "M03",
+            "count": 552,
+            "percentage": 5.52
+          },
+          {
+            "value": "M13",
+            "count": 494,
+            "percentage": 4.94
+          },
+          {
+            "value": "M02",
+            "count": 124,
+            "percentage": 1.24
+          },
+          {
+            "value": "M36",
+            "count": 111,
+            "percentage": 1.11
+          },
+          {
+            "value": "M24",
+            "count": 107,
+            "percentage": 1.07
+          },
+          {
+            "value": "M09",
+            "count": 105,
+            "percentage": 1.05
+          },
+          {
+            "value": "D07",
+            "count": 98,
+            "percentage": 0.98
+          }
+        ]
+      },
+      "null_count": 3,
+      "null_percentage": 0.03,
+      "total_count": 10000,
+      "sample_values": [
+        "M12",
+        "M06",
+        "M06",
+        "D07",
+        "M12"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "M01",
+          "M06",
+          "M12",
+          "M03",
+          "M13",
+          "M02",
+          "M36",
+          "M24",
+          "M09",
+          "D07"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values.  Based on the provided data, values appear to be of the format \"Mx\" where 'x' is a number representing the term in months, and potentially some codes starting with 'D' (Possibly different term types).  Values observed: M01, M02, M03, M06, M12, M13, M24, M36, M09, D07, etc.",
+      "constraints_description": "Values should conform to the observed pattern (mostly \"Mx\" where x is a number).  A mapping needs to be established between the codes and their corresponding durations.  Data should be checked for inconsistencies and typos.",
+      "data_quality": "Check for consistency in the coding scheme.  Investigate the meaning of codes starting with 'D'.  Handle null values appropriately (e.g., imputation or removal). Ensure all values are present in the defined code list."
+    },
+    "ROLLOVER_TERM": {
+      "description": "Rollover term for the savings account, indicating the period after which the deposit automatically rolls over.  Values are likely coded with a combination of numerical value and 'M' for months.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 88,
+        "top_categories": [
+          {
+            "value": "0001M",
+            "count": 1675,
+            "percentage": 27.94
+          },
+          {
+            "value": "0006M",
+            "count": 1195,
+            "percentage": 19.94
+          },
+          {
+            "value": "0012M",
+            "count": 1035,
+            "percentage": 17.27
+          },
+          {
+            "value": "001M",
+            "count": 285,
+            "percentage": 4.75
+          },
+          {
+            "value": "0003M",
+            "count": 273,
+            "percentage": 4.55
+          },
+          {
+            "value": "0013M",
+            "count": 201,
+            "percentage": 3.35
+          },
+          {
+            "value": "006M",
+            "count": 193,
+            "percentage": 3.22
+          },
+          {
+            "value": "012M",
+            "count": 189,
+            "percentage": 3.15
+          },
+          {
+            "value": ".",
+            "count": 113,
+            "percentage": 1.89
+          },
+          {
+            "value": "013M",
+            "count": 90,
+            "percentage": 1.5
+          }
+        ]
+      },
+      "null_count": 4006,
+      "null_percentage": 40.06,
+      "total_count": 10000,
+      "sample_values": [
+        "0001M",
+        "0006M",
+        "0003M",
+        "006M",
+        "0012M"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "0001M",
+          "0006M",
+          "0012M",
+          "001M",
+          "0003M",
+          "0013M",
+          "006M",
+          "012M",
+          null
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values.  Values seem to represent a period in months.  Most values follow the pattern \"000XM\" where X is the number of months. The leading zeros suggest a fixed-width representation.  There are exceptions and missing values denoted by \".\"",
+      "constraints_description": "Most values should follow the \"000XM\" pattern, where X represents the number of months.  Handle the \".\" values appropriately (e.g., impute with a default, treat as missing, or recode).  Check for inconsistencies and unusual values.",
+      "data_quality": "Address the high null rate (40.06%). Investigate the reason for nulls and the meaning of \".\".  Standardize the format of the values (e.g., remove leading zeros) if necessary."
+    },
+    "ORIG_INTEREST_RATE": {
+      "description": "Original interest rate offered on the savings account at the time of deposit.",
+      "key_type": "",
+      "data_type": "float",
+      "stats": {
+        "min": 0.0,
+        "max": 12.0,
+        "mean": 5.194720552642194,
+        "median": 5.1,
+        "std_dev": 1.9162783079106154,
+        "unique_values_count": 219
+      },
+      "null_count": 84,
+      "null_percentage": 0.84,
+      "total_count": 10000,
+      "sample_values": [
+        6.4,
+        2.8,
+        7.5,
+        5.85,
+        5.4
+      ],
+      "faker_provider": "pyfloat",
+      "faker_args": {
+        "min_value": 0.0,
+        "max_value": 12.0
+      },
+      "sdv_constraints": [],
+      "post_processing": "format_percentage\n---",
+      "domain": "Float values representing the annual percentage interest rate.  Ranges from 0.0 to 12.0.",
+      "constraints_description": "Values should be non-negative and within a realistic range for interest rates (e.g., 0.0 - 15.0).",
+      "data_quality": "Address the null values (0.84%).  Check for outliers and potentially incorrect values outside the expected range."
+    },
+    "OFFER_RATE": {
+      "description": "Interest rate offered to the customer for the savings account.  Might differ from the original rate due to promotions or other factors.",
+      "key_type": "",
+      "data_type": "float",
+      "stats": {
+        "min": 0.0,
+        "max": 9.5,
+        "mean": 4.492998990918265,
+        "median": 4.55,
+        "std_dev": 1.3746311818310235,
+        "unique_values_count": 139
+      },
+      "null_count": 90,
+      "null_percentage": 0.9,
+      "total_count": 10000,
+      "sample_values": [
+        2.8,
+        4.6,
+        5.5,
+        0.5,
+        2.8
+      ],
+      "faker_provider": "pyfloat",
+      "faker_args": {
+        "min_value": 0.0,
+        "max_value": 9.5
+      },
+      "sdv_constraints": [],
+      "post_processing": "format_percentage\n---",
+      "domain": "Float values representing the annual percentage interest rate.  Ranges from 0.0 to 9.5.",
+      "constraints_description": "Values should be non-negative and within a realistic range for interest rates (e.g., 0.0 - 15.0).",
+      "data_quality": "Handle the null values (0.9%). Check for outliers or errors."
+    },
+    "FIRST_INTEREST": {
+      "description": "Interest rate applied during the first period of the savings account.",
+      "key_type": "null",
+      "data_type": "float",
+      "stats": {
+        "min": 0.0,
+        "max": 12.0,
+        "mean": 5.245959583833534,
+        "median": 5.2,
+        "std_dev": 1.949729451753423,
+        "unique_values_count": 229
+      },
+      "null_count": 4,
+      "null_percentage": 0.04,
+      "total_count": 10000,
+      "sample_values": [
+        11.95,
+        8.9,
+        6.5,
+        5.05,
+        3.0
+      ],
+      "faker_provider": "pyfloat",
+      "faker_args": {
+        "min_value": 0.0,
+        "max_value": 12.0
+      },
+      "sdv_constraints": [],
+      "post_processing": "format_percentage",
+      "domain": "Float values representing the annual percentage interest rate.  Ranges from 0.0 to 12.0.",
+      "constraints_description": "Values should be non-negative and within a realistic range for interest rates.",
+      "data_quality": "The number of null values is very low (0.04%), which can be handled by imputation or removal. Check for outliers."
+    },
+    "FIRST_BALANCE": {
+      "description": "Initial account balance in Vietnamese Dong (VND). Represents the starting balance of a customer's account.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 10500000000000.0,
+        "mean": 31174078173.108,
+        "median": 2000000000.0,
+        "std_dev": 337700583899.0694,
+        "unique_values_count": 2061
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        15000000000,
+        150000000,
+        126293572,
+        25000000000,
+        5000000000
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 10500000000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integers, representing amounts in VND.  Realistic range is between 0 and 10,500,000,000,000 VND (based on provided stats).",
+      "constraints_description": "Must be a non-negative integer.  Values should be consistent with typical Vietnamese banking account balances.",
+      "data_quality": "Check for negative values.  Analyze the distribution for outliers and potential errors.  Consider applying a reasonable upper bound if necessary."
+    },
+    "AGG_BAL_INTEREST": {
+      "description": "Aggregated balance including interest earned. This likely represents the total balance of an account, including accumulated interest over a period.",
+      "key_type": "",
+      "data_type": "float",
+      "stats": {
+        "min": 0.0,
+        "max": 520257000000000.0,
+        "mean": 317196935979.905,
+        "median": 20700000000.0,
+        "std_dev": 5859177454596.06,
+        "unique_values_count": 4388
+      },
+      "null_count": 82,
+      "null_percentage": 0.82,
+      "total_count": 10000,
+      "sample_values": [
+        17875320480.0,
+        2312000000.0,
+        6100000000.0,
+        10800000000.0,
+        3000000000.0
+      ],
+      "faker_provider": "pyfloat",
+      "faker_args": {
+        "min_value": 0.0,
+        "max_value": 520257000000000.0
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative floating-point numbers, representing amounts in VND. Realistic range is between 0 and 52,025,700,000,000 VND (based on provided stats).  Allow for decimal values due to interest calculations.",
+      "constraints_description": "Must be a non-negative floating-point number.  Values should be consistent with typical accumulated balances and interest in Vietnamese banking.  Handle null values appropriately (e.g., imputation or removal).",
+      "data_quality": "Check for negative values. Handle null values (8.2% nulls). Investigate the reasons for nulls. Consider imputation methods (e.g., mean, median, or a more sophisticated approach based on other features) or removal based on the impact on analysis. Analyze distribution for outliers."
+    },
+    "INTEREST_BAL": {
+      "description": "Interest balance earned on the account.  Represents the amount of interest accumulated in the account.",
+      "key_type": "",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 6,
+        "categories": [
+          {
+            "value": 0.0,
+            "count": 9914,
+            "percentage": 99.95
+          },
+          {
+            "value": 107167511.0,
+            "count": 1,
+            "percentage": 0.01
+          },
+          {
+            "value": 67459578.0,
+            "count": 1,
+            "percentage": 0.01
+          },
+          {
+            "value": 315734.0,
+            "count": 1,
+            "percentage": 0.01
+          },
+          {
+            "value": 59777683.0,
+            "count": 1,
+            "percentage": 0.01
+          },
+          {
+            "value": 7222139.0,
+            "count": 1,
+            "percentage": 0.01
+          }
+        ]
+      },
+      "null_count": 81,
+      "null_percentage": 0.81,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          0.0,
+          107167511.0,
+          67459578.0,
+          315734.0,
+          59777683.0,
+          7222139.0
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative floating-point numbers, representing amounts in VND.  Almost all values are 0.0, with a few exceptions.",
+      "constraints_description": "Must be a non-negative floating-point number.  The vast majority of values are expected to be 0.0.  Handle null values appropriately (e.g., imputation or removal).",
+      "data_quality": "High percentage of 0 values (99.95%). Investigate the reason for the few non-zero values.  Handle null values (0.81% nulls).  Consider imputation strategies (e.g., 0.0) or removal."
+    },
+    "SEAB_SALES_TYPE": {
+      "description": "Group of sales staff (e.g., Teller, Relationship Manager, Corporate Relationship Manager). Categorizes the type of banking representative who interacted with the customer.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 6,
+        "categories": [
+          {
+            "value": "CRO.SME",
+            "count": 4276,
+            "percentage": 46.63
+          },
+          {
+            "value": "TELLER",
+            "count": 3971,
+            "percentage": 43.3
+          },
+          {
+            "value": "RM",
+            "count": 836,
+            "percentage": 9.12
+          },
+          {
+            "value": "CRO.IND",
+            "count": 63,
+            "percentage": 0.69
+          },
+          {
+            "value": "VCRO",
+            "count": 23,
+            "percentage": 0.25
+          },
+          {
+            "value": "CRO.IND.HO",
+            "count": 1,
+            "percentage": 0.01
+          }
+        ]
+      },
+      "null_count": 830,
+      "null_percentage": 8.3,
+      "total_count": 10000,
+      "sample_values": [
+        "TELLER",
+        "CRO.SME",
+        "CRO.SME",
+        "TELLER",
+        "CRO.SME"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "CRO.SME",
+          "TELLER",
+          "RM",
+          "CRO.IND",
+          "VCRO",
+          "CRO.IND.HO"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values representing sales staff roles:  'CRO.SME', 'TELLER', 'RM', 'CRO.IND', 'VCRO', 'CRO.IND.HO'.",
+      "constraints_description": "Value must be one of the defined categories. Handle null values appropriately.",
+      "data_quality": "High percentage of null values (8.3%).  Investigate reasons for missing data. Imputation could be done based on other features (e.g., if other features indicate a corporate client, it's more likely to be a CRO type).  Alternatively, nulls could be considered a separate category or removed depending on the analysis."
+    },
+    "SEAB_SALES_ID": {
+      "description": "ID of the sales staff member. A unique identifier for each sales representative.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 7.0,
+        "max": 44128888.0,
+        "mean": 15300837.809705561,
+        "median": 15508719.0,
+        "std_dev": 3429057.5215698956,
+        "unique_values_count": 623
+      },
+      "null_count": 830,
+      "null_percentage": 8.3,
+      "total_count": 10000,
+      "sample_values": [
+        14646854.0,
+        15971858.0,
+        14523708.0,
+        15971858.0,
+        154196.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 7,
+        "max": 44128888
+      },
+      "sdv_constraints": [],
+      "post_processing": "null",
+      "domain": "Positive integers representing unique IDs. Range is from 7 to 44,128,888 (based on provided stats).",
+      "constraints_description": "Must be a positive integer.  Should be unique (though stats suggest duplicates exist).  Handle null values appropriately.",
+      "data_quality": "High percentage of null values (8.3%). Investigate reasons for missing data. Handle potential duplicate IDs.  Null values should be addressed (imputation or removal)."
+    },
+    "SEAB_BROKERS_TYPE": {
+      "description": "Group of introducers (employee, partner...).  This column categorizes the type of individual or entity that introduced the customer to the bank.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 4,
+        "categories": [
+          {
+            "value": "NHANVIEN",
+            "count": 9238,
+            "percentage": 99.64
+          },
+          {
+            "value": "KHACHHANG",
+            "count": 31,
+            "percentage": 0.33
+          },
+          {
+            "value": "CONGTACVIEN",
+            "count": 1,
+            "percentage": 0.01
+          },
+          {
+            "value": "KHACHHANGUYTIN",
+            "count": 1,
+            "percentage": 0.01
+          }
+        ]
+      },
+      "null_count": 729,
+      "null_percentage": 7.29,
+      "total_count": 10000,
+      "sample_values": [
+        "NHANVIEN",
+        "NHANVIEN",
+        "NHANVIEN",
+        "NHANVIEN",
+        "NHANVIEN"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "NHANVIEN",
+          "KHACHHANG",
+          "CONGTACVIEN",
+          "KHACHHANGUYTIN"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "{'NHANVIEN' (Employee), 'KHACHHANG' (Customer), 'CONGTACVIEN' (Collaborator), 'KHACHHANGUYTIN' (Trusted Customer)}",
+      "constraints_description": "The value must be one of the four specified categories.",
+      "data_quality": "Check that all values belong to the defined categories.  Investigate the very low counts for categories other than 'NHANVIEN' to determine if they are valid or should be treated as outliers/errors.  Handle missing values appropriately (e.g., imputation or removal)."
+    },
+    "SEAB_BROKERS_ID": {
+      "description": "ID of the introducer.  This is a unique identifier for each introducer.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 7.0,
+        "max": 50000201.0,
+        "mean": 15223694.81199439,
+        "median": 15483272.0,
+        "std_dev": 3582740.705343317,
+        "unique_values_count": 731
+      },
+      "null_count": 729,
+      "null_percentage": 7.29,
+      "total_count": 10000,
+      "sample_values": [
+        14053848.0,
+        14646854.0,
+        15007120.0,
+        19902222.0,
+        16491836.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 7,
+        "max": 50000201
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values ranging from 7 to 50000201.",
+      "constraints_description": "Must be a unique integer within the specified range.  Should correlate with entries in a separate introducer table (if one exists).",
+      "data_quality": "Check for duplicates.  Ensure values are within the specified range.  Investigate missing values; they may indicate a problem with data collection."
+    },
+    "TOTAL_LOCKED_AMT": {
+      "description": "Total amount of money locked until the given date. This likely represents funds that are temporarily unavailable for withdrawal or transfer.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 250000000000.0,
+        "mean": 324301700.5855429,
+        "median": 0.0,
+        "std_dev": 4163997197.3583345,
+        "unique_values_count": 348
+      },
+      "null_count": 81,
+      "null_percentage": 0.81,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 250000000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "format_as_currency\n---",
+      "domain": "Non-negative integers, representing amounts in a currency (likely Vietnamese Dong). Range: 0 to 250,000,000,000.",
+      "constraints_description": "Must be a non-negative integer.  Values should be reasonable given the context of the dataset.",
+      "data_quality": "Check for negative values (errors). Examine the distribution; the high standard deviation and the median of 0 suggest a highly skewed distribution with many zero values.  Investigate this imbalance. Handle missing values (imputation or removal)."
+    },
+    "SEAB_LOS_ID": {
+      "description": "Unknown.  This column contains only null values.",
+      "key_type": "",
+      "data_type": "integer",
+      "stats": {
+        "unique_values_count": 0
+      },
+      "null_count": 10000,
+      "null_percentage": 100.0,
+      "total_count": 10000,
+      "sample_values": [],
+      "faker_provider": "null",
+      "faker_args": {},
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Unknown.",
+      "constraints_description": "All values are currently NULL.",
+      "data_quality": "The column appears to be entirely empty.  Determine if this column is necessary. If so, investigate why the data is missing, and decide whether to remove the column, replace the nulls with a meaningful value (e.g. 0 or -1), or attempt to retrieve the missing data."
+    },
+    "AC_TRANS_LIMIT_SK": {
+      "description": "Unknown.  This column contains almost exclusively the value 2.0.",
+      "key_type": "",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 1,
+        "categories": [
+          {
+            "value": 2.0,
+            "count": 9919,
+            "percentage": 100.0
+          }
+        ]
+      },
+      "null_count": 81,
+      "null_percentage": 0.81,
+      "total_count": 10000,
+      "sample_values": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          2.0
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null",
+      "domain": "Primarily 2.0, with a small number of null values. The meaning of the value 2.0 is unknown without further context.",
+      "constraints_description": "Almost all values are 2.0;  the meaning of this value needs to be investigated.",
+      "data_quality": "The column is almost entirely uniform.  Determine if this is expected or an error. Handle missing values (imputation or removal).  Investigate the meaning of the value 2.0."
+    },
+    "CUSTOMER_SK": {
+      "description": "Surrogate key referencing customer records in `dim_ent_cust` and `dim_ent_cust_pii` tables.  This is a unique identifier for each customer.",
+      "key_type": "Foreign Key",
+      "data_type": "integer",
+      "stats": {
+        "min": 8041162.0,
+        "max": 30418068.0,
+        "mean": 30002075.9519,
+        "median": 30135964.0,
+        "std_dev": 476420.40750741033,
+        "unique_values_count": 1149
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        30322870,
+        30243953,
+        30110405,
+        30353366,
+        30180030
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 8041162,
+        "max": 30418068
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values within the range [8041162, 30418068].  Values are consistently increasing surrogate keys.",
+      "constraints_description": "Must be a unique integer within the specified range. Should not contain duplicates.",
+      "data_quality": "Check for uniqueness, ensure values fall within the specified range, and verify consistency with related tables (`dim_ent_cust` and `dim_ent_cust_pii`)."
+    },
+    "CATEGORY_SK": {
+      "description": "Surrogate key referencing category records in the `dim_ent_category` table. This represents a category of products or services.",
+      "key_type": "Foreign Key",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 17,
+        "top_categories": [
+          {
+            "value": 1647,
+            "count": 8343,
+            "percentage": 83.43
+          },
+          {
+            "value": 1650,
+            "count": 457,
+            "percentage": 4.57
+          },
+          {
+            "value": 3188,
+            "count": 344,
+            "percentage": 3.44
+          },
+          {
+            "value": 4130,
+            "count": 344,
+            "percentage": 3.44
+          },
+          {
+            "value": 330,
+            "count": 105,
+            "percentage": 1.05
+          },
+          {
+            "value": 3892,
+            "count": 105,
+            "percentage": 1.05
+          },
+          {
+            "value": 4092,
+            "count": 71,
+            "percentage": 0.71
+          },
+          {
+            "value": 6284,
+            "count": 64,
+            "percentage": 0.64
+          },
+          {
+            "value": 6764,
+            "count": 41,
+            "percentage": 0.41
+          },
+          {
+            "value": 6085,
+            "count": 38,
+            "percentage": 0.38
+          }
+        ]
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        1647,
+        1647,
+        1647,
+        1647,
+        6666
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          1647,
+          1650,
+          3188,
+          4130,
+          330,
+          3892,
+          4092,
+          6284,
+          6764,
+          6085,
+          1648,
+          1649,
+          3189,
+          4131,
+          331,
+          3893,
+          4093
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values representing different product or service categories.  The most frequent value is 1647, followed by 1650, 3188, 4130, etc.",
+      "constraints_description": "Must be one of the valid category IDs present in the `dim_ent_category` table.",
+      "data_quality": "Check that all values are valid category IDs present in the `dim_ent_category` table. Verify that the distribution of values aligns with the observed distribution (83.43% are 1647)."
+    },
+    "PRODUCTS_SK": {
+      "description": "Surrogate key referencing product records in the `dim_ent_product` table. This uniquely identifies a specific product.",
+      "key_type": "Foreign Key",
+      "data_type": "integer",
+      "stats": {
+        "min": 115931.0,
+        "max": 8754138.0,
+        "mean": 1565377.2053,
+        "median": 1391694.0,
+        "std_dev": 809417.7896637885,
+        "unique_values_count": 24
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        1391694,
+        4358513,
+        1391694,
+        344477,
+        1391694
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 115931,
+        "max": 8754138
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values within the range [115931, 8754138]. Values are surrogate keys.",
+      "constraints_description": "Must be a unique integer within the specified range. Should not contain duplicates.",
+      "data_quality": "Check for uniqueness, ensure values fall within the specified range, and verify consistency with the `dim_ent_product` table."
+    },
+    "COMPANY_SK": {
+      "description": "Surrogate key referencing company records in the `dim_ent_company` table. This identifies the company associated with a transaction or product.",
+      "key_type": "Foreign Key",
+      "data_type": "integer",
+      "stats": {
+        "min": 158.0,
+        "max": 7684793.0,
+        "mean": 5774613.7273,
+        "median": 6292836.0,
+        "std_dev": 1633010.0405245102,
+        "unique_values_count": 99
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        7684373,
+        3069396,
+        3987635,
+        6533123,
+        4749610
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 158,
+        "max": 7684793
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values within the range [158, 7684793]. Values are surrogate keys.",
+      "constraints_description": "Must be a unique integer within the specified range. Should not contain duplicates.",
+      "data_quality": "Check for uniqueness, ensure values fall within the specified range, and verify consistency with the `dim_ent_company` table."
+    },
+    "CURRENCY_SK": {
+      "description": "Surrogate key referencing currency records in the `dim_ent_currency` table. This indicates the currency of a transaction.",
+      "key_type": "Foreign Key",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 2,
+        "categories": [
+          {
+            "value": 25066,
+            "count": 9990,
+            "percentage": 99.9
+          },
+          {
+            "value": 52598,
+            "count": 10,
+            "percentage": 0.1
+          }
+        ]
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        25066,
+        25066,
+        25066,
+        25066,
+        25066
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          25066,
+          52598
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null",
+      "domain": "Categorical values representing different currencies.  Almost all values are 25066, with a very small percentage of 52598.",
+      "constraints_description": "Must be one of the valid currency IDs (25066 or 52598) present in the `dim_ent_currency` table.",
+      "data_quality": "Check that values are either 25066 or 52598.  Investigate why only a small number of records have a value of 52598."
+    },
+    "CHANNEL_SK": {
+      "description": "Foreign key referencing the `dim_ent_channel` table, representing the channel through which the banking product was accessed.  Values represent a coded representation of the channel.",
+      "key_type": "Foreign Key",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 5,
+        "categories": [
+          {
+            "value": 18.0,
+            "count": 9058,
+            "percentage": 91.32
+          },
+          {
+            "value": 20.0,
+            "count": 424,
+            "percentage": 4.27
+          },
+          {
+            "value": 965.0,
+            "count": 265,
+            "percentage": 2.67
+          },
+          {
+            "value": 144.0,
+            "count": 170,
+            "percentage": 1.71
+          },
+          {
+            "value": 2.0,
+            "count": 2,
+            "percentage": 0.02
+          }
+        ]
+      },
+      "null_count": 81,
+      "null_percentage": 0.81,
+      "total_count": 10000,
+      "sample_values": [
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          2.0,
+          144.0,
+          18.0,
+          20.0,
+          965.0
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values representing different channels.  Based on the provided data, realistic values are within the set {2, 144, 18, 20, 965}.",
+      "constraints_description": "Must be one of the values observed in the dataset: 2, 144, 18, 20, 965.  Should align with the keys present in the `dim_ent_channel` table.",
+      "data_quality": "Validate that the value is one of the permissible channel codes. Handle null values appropriately (e.g., imputation or removal, depending on downstream analysis)."
+    },
+    "CONTRACT_SK": {
+      "description": "Foreign key referencing the `dim_ent_term_deposit` table, representing the specific contract or term deposit agreement.",
+      "key_type": "Foreign Key",
+      "data_type": "integer",
+      "stats": {
+        "min": 11278.0,
+        "max": 30477.0,
+        "mean": 20383.3414,
+        "median": 19414.0,
+        "std_dev": 5843.266116183354,
+        "unique_values_count": 10000
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        20206,
+        18384,
+        29798,
+        23790,
+        12388
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 11278,
+        "max": 30477
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer values representing unique contract identifiers.  Ranges from 11278 to 30477 based on the provided data.",
+      "constraints_description": "Must be a unique integer within the specified range. Should align with the keys present in the `dim_ent_term_deposit` table.",
+      "data_quality": "Check for duplicates.  Ensure values fall within the observed range."
+    },
+    "ONLINE_ACTUAL_BAL": {
+      "description": "The online actual balance at the end of the day for the account on the T24 system, excluding forward transactions.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 898303000000.0,
+        "mean": 4199000485.8493,
+        "median": 0.0,
+        "std_dev": 31281685802.023453,
+        "unique_values_count": 1079
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1000000000.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 898303000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "format_as_currency\n---",
+      "domain": "Non-negative integer representing monetary value in the smallest currency unit (e.g., cents).  Ranges from 0 to 898,303,000,000 based on the provided data.  The high maximum suggests potential outliers that may warrant further investigation.",
+      "constraints_description": "Must be a non-negative integer.",
+      "data_quality": "Check for outliers and potentially incorrect values (e.g., values significantly larger than the mean). Consider applying log transformation for skewed distributions before modeling."
+    },
+    "SUB_CHANNEL_ID": {
+      "description": "The specific sub-channel through which the transaction was performed.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 2,
+        "categories": [
+          {
+            "value": "LOS",
+            "count": 265,
+            "percentage": 94.98
+          },
+          {
+            "value": "SEAPORTAL",
+            "count": 14,
+            "percentage": 5.02
+          }
+        ]
+      },
+      "null_count": 9721,
+      "null_percentage": 97.21,
+      "total_count": 10000,
+      "sample_values": [
+        "LOS",
+        "LOS",
+        "LOS",
+        "LOS",
+        "LOS"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "LOS",
+          "SEAPORTAL"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Categorical values, with \"LOS\" and \"SEAPORTAL\" observed in the data.",
+      "constraints_description": "Must be either \"LOS\" or \"SEAPORTAL\".",
+      "data_quality": "Handle missing values (97.21% are null) appropriately (e.g., imputation with the most frequent value \"LOS\" or removal, depending on the downstream analysis)."
+    },
+    "FREQUENCY_DATE": {
+      "description": "The date on which interest is received, linked to the `DIM_DEPOSIT.FREQUENCY` table.",
+      "key_type": "null",
+      "data_type": "string",
+      "stats": {
+        "unique_values_count": 105,
+        "max_length": 10,
+        "min_length": 10,
+        "mean_length": 10.0
+      },
+      "null_count": 9834,
+      "null_percentage": 98.34,
+      "total_count": 10000,
+      "sample_values": [
+        "2023-06-27",
+        "2024-08-29",
+        "2023-11-16",
+        "2024-07-11",
+        "2024-02-29"
+      ],
+      "faker_provider": "date_between",
+      "faker_args": {
+        "start_date": "2023-01-01",
+        "end_date": "2025-01-01"
+      },
+      "sdv_constraints": [],
+      "post_processing": "null",
+      "domain": "Dates represented as strings in \"YYYY-MM-DD\" format.",
+      "constraints_description": "Should be a valid date string in YYYY-MM-DD format.",
+      "data_quality": "Validate the date format. Handle null values appropriately (e.g., imputation with a plausible date or removal).  The high percentage of null values (98.34%) indicates a problem with data collection or completeness."
+    },
+    "FAVORITE_TERM": {
+      "description": "Preferred loan term (in days) as requested by the customer.  This reflects the customer's desired loan repayment period, which may differ from the actual loan term. For example, a customer might apply for a 36-month loan but prefer to settle it within 12 months and receive the interest rate applicable to a 12-month loan.",
+      "key_type": "null",
+      "data_type": "categorical",
+      "stats": {
+        "unique_values_count": 134,
+        "top_categories": [
+          {
+            "value": "30",
+            "count": 117,
+            "percentage": 27.59
+          },
+          {
+            "value": "6",
+            "count": 28,
+            "percentage": 6.6
+          },
+          {
+            "value": "31",
+            "count": 21,
+            "percentage": 4.95
+          },
+          {
+            "value": "365",
+            "count": 11,
+            "percentage": 2.59
+          },
+          {
+            "value": "184",
+            "count": 9,
+            "percentage": 2.12
+          },
+          {
+            "value": "208",
+            "count": 6,
+            "percentage": 1.42
+          },
+          {
+            "value": "183",
+            "count": 6,
+            "percentage": 1.42
+          },
+          {
+            "value": "185",
+            "count": 5,
+            "percentage": 1.18
+          },
+          {
+            "value": "405",
+            "count": 5,
+            "percentage": 1.18
+          },
+          {
+            "value": "367",
+            "count": 5,
+            "percentage": 1.18
+          }
+        ]
+      },
+      "null_count": 9576,
+      "null_percentage": 95.76,
+      "total_count": 10000,
+      "sample_values": [
+        "174",
+        "367",
+        "64",
+        "180",
+        "30"
+      ],
+      "faker_provider": "random_element",
+      "faker_args": {
+        "elements": [
+          "6",
+          "30",
+          "31",
+          "365",
+          "184",
+          "208",
+          "183",
+          "185",
+          "405",
+          "367",
+          "180",
+          "64",
+          "174"
+        ]
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Integer representing number of days.  Values observed range from 6 to 405.  It appears to represent loan terms in months, which are then converted to days.",
+      "constraints_description": "Value should be a positive integer representing a valid loan term in days.  The values seem to represent loan terms in days rather than months. Values should be consistent with business logic for acceptable loan durations.",
+      "data_quality": "Check for values outside the observed range (6-405 days).  Investigate the apparent conversion from months to days – ensure consistency and accuracy of conversion. Handle missing values appropriately (e.g., imputation or removal). Check for outliers or unexpected values."
+    },
+    "OPEN_ACTUAL_BAL": {
+      "description": "The opening day balance of the account on the T24 system.  This represents the account balance at the start of the day.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 898303000000.0,
+        "mean": 4235694747.1643,
+        "median": 0.0,
+        "std_dev": 31327562969.928688,
+        "unique_values_count": 1079
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        1000000000.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 898303000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integer representing the balance in the smallest currency unit (likely VND). The range is 0 to 898,303,000,000.",
+      "constraints_description": "Must be a non-negative integer.",
+      "data_quality": "Check for negative values (should not exist).  Investigate extremely high values to ensure data accuracy.  Examine the distribution – a large number of zero values suggests potential data issues needing investigation."
+    },
+    "ONLINE_CLEARED_BAL": {
+      "description": "The closing day balance of the account on the T24 system, including forward transactions. This represents the balance at the end of the day, incorporating all completed transactions, including those with future settlement dates.",
+      "key_type": "null",
+      "data_type": "integer",
+      "stats": {
+        "min": 0.0,
+        "max": 898303000000.0,
+        "mean": 4199000485.8493,
+        "median": 0.0,
+        "std_dev": 31281685802.023453,
+        "unique_values_count": 1079
+      },
+      "null_count": 0,
+      "null_percentage": 0.0,
+      "total_count": 10000,
+      "sample_values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "faker_provider": "random_int",
+      "faker_args": {
+        "min": 0,
+        "max": 898303000000
+      },
+      "sdv_constraints": [],
+      "post_processing": "null\n---",
+      "domain": "Non-negative integer representing the balance in the smallest currency unit (likely VND). The range is 0 to 898,303,000,000.",
+      "constraints_description": "Must be a non-negative integer.",
+      "data_quality": "Check for negative values (should not exist). Investigate extremely high values to ensure data accuracy.  Examine the distribution – a large number of zero values suggests potential data issues.  Compare to `OPEN_ACTUAL_BAL` to identify potential inconsistencies."
+    }
+  },
+  "relationships": {
+    "PRODUCT_CODE": [
+      {
+        "column": "PRODUCTS_SK",
+        "correlation": 0.744,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "PRODUCTS_SK": [
+      {
+        "column": "PRODUCT_CODE",
+        "correlation": 0.744,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CLOSE_BAL": [
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 0.976,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 0.991,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 0.865,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 0.96,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CLOSE_BAL_LCY": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 0.976,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 0.991,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 0.865,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 0.96,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "AGG_BAL_MTD": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 0.976,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 0.976,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 0.894,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 0.973,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 0.975,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 0.975,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 0.976,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 0.975,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CLOSE_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "AGG_BAL_MTD_LCY": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 0.991,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 0.991,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 0.896,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 0.973,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 0.989,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 0.989,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 0.991,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 0.989,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CLOSE_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "AGG_BAL_YTD": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 0.865,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 0.865,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 0.894,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 0.896,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 0.864,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 0.864,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 0.865,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 0.864,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CLOSE_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "AGG_BAL_YTD_LCY": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 0.96,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 0.96,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 0.973,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 0.973,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 0.958,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 0.958,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 0.96,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 0.958,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CLOSE_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "WORKING_BALANCE": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 0.975,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 0.989,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 0.864,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 0.958,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      }
+    ],
+    "ONLINE_ACTUAL_BAL": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 0.975,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 0.989,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 0.864,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 0.958,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "OPEN_ACTUAL_BAL": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 0.976,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 0.991,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 0.865,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 0.96,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "ONLINE_CLEARED_BAL": [
+      {
+        "column": "CLOSE_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "correlation": 0.975,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "correlation": 0.989,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "correlation": 0.864,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "correlation": 0.958,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 0.998,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "REVAL_RATE": [
+      {
+        "column": "CURRENCY_SK",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CURRENCY_SK": [
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "INTEREST_RATE": [
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "correlation": 0.895,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OFFER_RATE",
+        "correlation": 0.907,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "correlation": 0.864,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "ORIG_INTEREST_RATE": [
+      {
+        "column": "INTEREST_RATE",
+        "correlation": 0.895,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OFFER_RATE",
+        "correlation": 0.85,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "correlation": 0.982,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "OFFER_RATE": [
+      {
+        "column": "INTEREST_RATE",
+        "correlation": 0.907,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "correlation": 0.85,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "correlation": 0.838,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "FIRST_INTEREST": [
+      {
+        "column": "INTEREST_RATE",
+        "correlation": 0.864,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "correlation": 0.982,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "OFFER_RATE",
+        "correlation": 0.838,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "SEAB_SALES_ID": [
+      {
+        "column": "SEAB_BROKERS_ID",
+        "correlation": 0.949,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "SEAB_BROKERS_ID": [
+      {
+        "column": "SEAB_SALES_ID",
+        "correlation": 0.949,
+        "type": "pearson_correlation"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "CONTRACT": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATASOURCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CO_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CUSTOMER",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CURRENCY",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REMAIN_TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_CR_CUST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_CUST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_CR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_CR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LIMIT_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LINE_NO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SETLEMENT_AC",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TERM_SBV",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ROLLOVER_TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "OFFER_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_SALES_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CONTRACT_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FREQUENCY_DATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FAVORITE_TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "DATASOURCE": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "CHANNEL_NAME": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATASOURCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CHANNEL_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "CO_CODE": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "CATEGORY": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATASOURCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CATEGORY_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "COMPANY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CHANNEL_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CUSTOMER": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LIMIT_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SETLEMENT_AC",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CURRENCY": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "AGG_BAL": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SETLEMENT_AC",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CATEGORY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CATEGORY_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "COMPANY_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CHANNEL_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CONTRACT_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "ACCR_INT": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "AC_TRANS_LIMIT_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CLOSE_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_MTD",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_MTD_LCY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_YTD_LCY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ACCR_REMAIN",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_INTEREST",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "ACCR_REMAIN": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "AC_TRANS_LIMIT_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "AGG_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL_INTEREST",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "DATE_LAST_CR_CUST": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "DATE_LAST_DR_CUST": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FREQUENCY_DATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "DATE_LAST_CR_BANK": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_CUST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "DATE_LAST_DR_BANK": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REMAIN_TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_CUST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LINE_NO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TERM_SBV",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "OFFER_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_SALES_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FREQUENCY_DATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "DATE_LAST_CR_AUTO": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FREQUENCY_DATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "DATE_LAST_DR_AUTO": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_CUST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LINE_NO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "LIMIT_ID": [
+      {
+        "column": "PRODUCT_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LINE_NO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SETLEMENT_AC",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "LINE_NO": [
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SETLEMENT_AC",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CAMPAIGN_ID": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CURRENCY",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "SETLEMENT_AC": [
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "ROLLOVER_TERM": [
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "AGG_BAL_INTEREST": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATASOURCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CLOSE_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CLOSE_BAL_LCY",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "INTEREST_BAL": [
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "SEAB_SALES_TYPE": [
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "SEAB_BROKERS_TYPE": [
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "TOTAL_LOCKED_AMT": [
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "AC_TRANS_LIMIT_SK": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATASOURCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CATEGORY",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CUSTOMER",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "AGG_BAL",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CATEGORY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "COMPANY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CHANNEL_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CONTRACT_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CUSTOMER_SK": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LIMIT_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SETLEMENT_AC",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CATEGORY_SK": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATASOURCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "COMPANY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CHANNEL_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CONTRACT_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "COMPANY_SK": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CO_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CONTRACT_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CHANNEL_SK": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATASOURCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CUSTOMER",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "COMPANY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CONTRACT_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "CONTRACT_SK": [
+      {
+        "column": "DAYID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATASOURCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CO_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CUSTOMER",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CURRENCY",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REMAIN_TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "WORKING_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_CR_CUST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_CUST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_CR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_BANK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_CR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "DATE_LAST_DR_AUTO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LIMIT_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LINE_NO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SETLEMENT_AC",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TERM_SBV",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ROLLOVER_TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "OFFER_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_SALES_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TOTAL_LOCKED_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "CURRENCY_SK",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FREQUENCY_DATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "FAVORITE_TERM",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "OPEN_ACTUAL_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "ONLINE_CLEARED_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_BALANCE",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_SALES_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "SEAB_BROKERS_ID",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "CUSTOMER_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "less_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ],
+    "SUB_CHANNEL_ID": [
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "FREQUENCY_DATE": [
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LINE_NO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SEAB_BROKERS_TYPE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "FAVORITE_TERM": [
+      {
+        "column": "TOT_INTEREST_AMT",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "REVAL_RATE",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "LINE_NO",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "TERM_SBV",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      },
+      {
+        "column": "SUB_CHANNEL_ID",
+        "correlation": 1.0,
+        "type": "functional_dependency"
+      }
+    ],
+    "FIRST_BALANCE": [
+      {
+        "column": "PRODUCT_CODE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "TOT_INTEREST_AMT",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "REVAL_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "LINE_NO",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "ORIG_INTEREST_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "OFFER_RATE",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "FIRST_INTEREST",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "INTEREST_BAL",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      },
+      {
+        "column": "PRODUCTS_SK",
+        "relationship": "greater_than_or_equal_to",
+        "type": "value_relationship"
+      }
+    ]
+  }
+}
